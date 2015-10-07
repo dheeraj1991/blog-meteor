@@ -76,6 +76,15 @@ if (Meteor.isClient) {
           Session.set('images', JSON.parse(results.content).images);
           Session.set('specific', null);
       });
+      setTimeout(function(){
+        $('.listContent').each(function(index){
+            truncated = $(this).text();
+            if (truncated.length > 300) {
+              truncated = truncated.substr(0,300) + '...';
+            }
+            $(this).text(truncated);
+        });
+      }, 3000);
     }
   });
 }

@@ -31,7 +31,7 @@ body{
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
-    background: #333645;
+    background: #333;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -122,7 +122,7 @@ body{
     width: 100%;
     left: 0;
     height: 200px;
-    background-color: #333645;
+    background-color: #333;
 }
 
 .nav-bottom-complete{
@@ -140,6 +140,11 @@ body{
     text-align:left; 
     float:left; 
     margin-right: 10px;
+}
+
+.article-content:hover{
+    background: rgba(0,0,0,0.2);
+    cursor:pointer;
 }
 
 @media(min-width:768px) {

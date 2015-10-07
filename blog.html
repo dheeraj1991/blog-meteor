@@ -58,7 +58,7 @@
                 </a>
                 <h2>Happy Blogging</h2>
                 {{#with isspecific}}
-                <button type="button" id="back" class="" style="float:right;">Back</button>
+                <button type="button" id="back" class="glyphicon glyphicon-menu-left" style="float:right;"></button>
                 {{/with}}
 
             </div>
@@ -121,7 +121,7 @@
             }
             $(this).text(truncated);
         });
-    }, 100);
+    }, 3000);
 
     </script>
 </body>
@@ -162,7 +162,7 @@
 </template>
 
 <template name="image">
-        <div class="col-xs-4"><img src="{{url}}" width="130px" alt="article"></div>
+        <div class="col-xs-4"><img src="{{url}}" width="130px" alt="article" style="align:center;"></div>
 </template>
 
 <template name="article">
