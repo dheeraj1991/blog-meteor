@@ -1,0 +1,127 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Articles</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+ 
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-search"></span> Top Search
+                    </a>
+                </li>
+                <li class="sidebar-content">
+                    <a href="#"><img src="/static/google.png" class="img-responsive" alt="Google"></a>
+                </li>
+                <li class="sidebar-content">
+                    <a href="#"><img src="/static/amazon.png" class="img-responsive" alt="Amazon"></a>
+                </li>
+                <li class="sidebar-content">
+                    <a href="#"><img src="/static/youtube.png" class="img-responsive" alt="YouTube"></a>
+                </li>
+                <li class="sidebar-content">
+                    <a href="#"><img src="/static/flipkart.png" class="img-responsive" alt="Flipkart"></a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="heading">
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                    &#9776;
+                </a>
+                <h2>Happy Blogging</h2>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{#each articles}}
+                        {{> article}}
+                        {{/each}}
+                        <h3></h3>
+                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+        <div class="navbar-bottom">
+            <div class="nav-bottom-complete">
+                <div class="nav-bottom-header">
+                    What to Read Next
+                    <span class="glyphicon glyphicon-chevron-right" style="float: right"></span>
+                    <span class="glyphicon glyphicon-chevron-left" style="float: right"></span>
+                    <hr style="color: #fff;">
+                </div>
+                <div class="row nav-bottom-content">
+                    {{#each images}}
+                    {{> image}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $(".container-fluid").click(function(e) {
+        if($("body").width() < 768){
+            if($("#wrapper").hasClass("toggled")){
+                $("#wrapper").toggleClass("toggled");
+            }
+        }
+    })
+    </script>
+</body>
+ 
+<template name="image">
+        <div class="col-xs-3"><img src="{{url}}" width="130px" alt="article"></div>
+</template>
+
+<template name="article">
+    <div class="article-content" id="{{id}}">
+        <input type="hidden" value="{{id}}">
+        <h3>{{title}}</h3>
+        <p>{{content}}</p>
+    </div>
+</template>
