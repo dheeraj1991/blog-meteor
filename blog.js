@@ -1,20 +1,21 @@
+BASE_URL = "https://blog-article.herokuapp.com"
 if (Meteor.isServer) {
     Meteor.methods({
         getArticles: function () {
             this.unblock();
-            return Meteor.http.get("http://localhost:8000/articles/", {timeout:30000});
+            return Meteor.http.get(BASE_URL + "/articles/", {timeout:30000});
         }
     });
     Meteor.methods({
         randomContent: function () {
             this.unblock();
-            return Meteor.http.get("http://localhost:8000/random/", {timeout:30000});
+            return Meteor.http.get(BASE_URL + "/random/", {timeout:30000});
         }
     });
     Meteor.methods({
         getSpecificArticle: function (id) {
             this.unblock();
-            return Meteor.http.get("http://localhost:8000/articles/" + id, {timeout:30000});
+            return Meteor.http.get(BASE_URL + "/articles/" + id, {timeout:30000});
         }
     });
 }
@@ -34,6 +35,9 @@ if (Meteor.isClient) {
   Template.body.helpers({
       images: function(){
         return Session.get('images');
+      },
+      isspecific: function(){
+        return Session.get('specific');
       }
   });
 
@@ -58,6 +62,19 @@ if (Meteor.isClient) {
       Session.set('articles', null);
       Meteor.call("getSpecificArticle", id, function(error, results) {
          Session.set('mainarticle', JSON.parse(results.content).article);
+      });
+    },
+    "click #back": function(event){
+      event.preventDefault();
+      Session.set('specific', null);
+      Meteor.call("getArticles", function(error, results) {
+           Session.set('articles', JSON.parse(results.content).articles);
+      });
+
+      Meteor.call("randomContent", function(error, results){
+          Session.set('mainarticle', JSON.parse(results.content).article);
+          Session.set('images', JSON.parse(results.content).images);
+          Session.set('specific', null);
       });
     }
   });
