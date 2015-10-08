@@ -112,16 +112,6 @@
         }
     })
 
-    setTimeout(function(){
-        $('.listContent').each(function(index){
-            truncated = $(this).text();
-            console.log(truncated);
-            if (truncated.length > 300) {
-              truncated = truncated.substr(0,300) + '...';
-            }
-            $(this).text(truncated);
-        });
-    }, 3000);
 
     </script>
 </body>

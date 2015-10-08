@@ -43,10 +43,10 @@ body{
 }
 
 #page-content-wrapper {
-    width: 80%;
+    width: 95%;
     left: 50px;
     position: absolute;
-    padding: 15px;
+    padding: 0px;
 }
 
 #wrapper.toggled #page-content-wrapper {

@@ -2,19 +2,16 @@ BASE_URL = "https://blog-article.herokuapp.com"
 if (Meteor.isServer) {
     Meteor.methods({
         getArticles: function () {
-            this.unblock();
             return Meteor.http.get(BASE_URL + "/articles/", {timeout:30000});
         }
     });
     Meteor.methods({
         randomContent: function () {
-            this.unblock();
             return Meteor.http.get(BASE_URL + "/random/", {timeout:30000});
         }
     });
     Meteor.methods({
         getSpecificArticle: function (id) {
-            this.unblock();
             return Meteor.http.get(BASE_URL + "/articles/" + id, {timeout:30000});
         }
     });
@@ -54,6 +51,16 @@ if (Meteor.isClient) {
       }
   });
 
+  Template.article.rendered = function() {
+      $('.listContent').each(function(index){
+          truncated = $(this).text();
+          if (truncated.length > 300) {
+            truncated = truncated.substr(0,300) + '...';
+          }
+          $(this).text(truncated);
+      });
+  }
+
   Template.body.events({
     "click .article-content": function(event){
       event.preventDefault();
@@ -76,15 +83,6 @@ if (Meteor.isClient) {
           Session.set('images', JSON.parse(results.content).images);
           Session.set('specific', null);
       });
-      setTimeout(function(){
-        $('.listContent').each(function(index){
-            truncated = $(this).text();
-            if (truncated.length > 300) {
-              truncated = truncated.substr(0,300) + '...';
-            }
-            $(this).text(truncated);
-        });
-      }, 3000);
     }
   });
 }
