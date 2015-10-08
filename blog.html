@@ -83,14 +83,18 @@
             <div class="nav-bottom-complete">
                 <div class="nav-bottom-header">
                     What to Read Next
-                    <span class="glyphicon glyphicon-chevron-right" style="float: right"></span>
-                    <span class="glyphicon glyphicon-chevron-left" style="float: right"></span>
                     <hr style="color: #fff;">
                 </div>
                 <div class="row nav-bottom-content">
+                    <div class="col-xs-1">
+                        <span class="navbar-bootm-arrow glyphicon glyphicon-chevron-left"></span>
+                    </div>
                     {{#each images}}
                     {{> image}}
                     {{/each}}
+                    <div class="col-xs-1">
+                        <span class="navbar-bootm-arrow glyphicon glyphicon-chevron-right"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,10 +145,11 @@
 
 <template name="mainarticle">
     <div class="main-article">
-            <h3>{{title}}</h3>
-            <label>{{publication_date}} | {{author}}</label>
-            <img src="{{hero_image}}" class="img-responsive">
-            <br>
+        <h3>{{title}}</h3>
+        <label>{{publication_date}} | {{author}}</label>
+        <img src="{{hero_image}}" class="img-responsive">
+        <br>
+        <div class="row">
             {{#if optional_image}}
                 <div class="col-xs-12 col-lg-8 content-justified">
                     <p>{{content}}</p>
@@ -157,16 +162,17 @@
                     <p>{{content}}</p>
                 </div>
             {{/if}}
+        </div>
     </div>
 </template>
 
 <template name="image">
-        <div class="col-xs-4"><img src="{{url}}" width="130px" alt="article" style="align:center;"></div>
+        <div class="col-xs-3"><img src="{{url}}" width="180px" alt="article" style="align:center;"></div>
 </template>
 
 <template name="article">
     <div class="article-content" id="{{id}}">
         <h3>{{title}}</h3>
-        <p class="listContent content-justified" style="padding-left:20px;">{{content}}</p>
+        <p class="listContent content-justified">{{content}}</p>
     </div>
 </template>
