@@ -67,6 +67,12 @@ body{
     margin-left: 50px;
 }
 
+.content-justified{
+    text-align: justify; 
+    text-justify: inter-word;
+    margin-left: -15px;
+}
+
 .sidebar-nav {
     position: absolute;
     top: 0;
@@ -140,6 +146,25 @@ body{
     text-align:left; 
     float:left; 
     margin-right: 10px;
+    margin-top: 15px;
+}
+
+#back{
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+    
+#overlay {
+    display:none;
+    opacity:0.5;
+    background-color:black;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index: 999;
 }
 
 .article-content:hover{
@@ -178,6 +203,9 @@ body{
 
 @media(max-width:768px) {
     .navbar-bottom{
+        display: none;
+    }
+    .optional-image{
         display: none;
     }
 }

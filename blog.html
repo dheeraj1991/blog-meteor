@@ -53,14 +53,21 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="heading">
-                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-                    &#9776;
-                </a>
-                <h2>Happy Blogging</h2>
-                {{#with isspecific}}
-                <button type="button" id="back" class="glyphicon glyphicon-menu-left" style="float:right;"></button>
-                {{/with}}
-
+                <div class="row">
+                    <div class="col-xs-3 col-lg-1">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                            &#9776;
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-lg-8">
+                        <h2>Happy Blogging</h2>
+                    </div>
+                    <div class="col-xs-2">
+                        {{#with isspecific}}
+                            <button type="button" id="back" class="glyphicon glyphicon-menu-left"></button>
+                        {{/with}}
+                    </div>
+                </div>
             </div>
             <div class="container-fluid">
                 <div class="row">
@@ -136,17 +143,19 @@
     <div class="main-article">
             <h3>{{title}}</h3>
             <label>{{publication_date}} | {{author}}</label>
-            <img src="{{hero_image}}" class="img-responsive" width="320px">
+            <img src="{{hero_image}}" class="img-responsive">
+            <br>
             {{#if optional_image}}
-                <div class="col-xs-7">
+                <div class="col-xs-12 col-lg-8 content-justified">
                     <p>{{content}}</p>
                 </div>
-                <div class="col-xs-1"></div>
-                <div class="col-xs-4">
-                    <img src="{{optional_image}}" width="160px" alt="Optional Image">
+                <div class="col-lg-4">
+                    <img src="{{optional_image}}" alt="Optional Image" class="img-responsive optional-image">
                 </div>
             {{else}}
-                <p>{{content}}</p>
+                <div class="col-xs-12 col-lg-12 content-justified">
+                    <p>{{content}}</p>
+                </div>
             {{/if}}
     </div>
 </template>
@@ -158,6 +167,6 @@
 <template name="article">
     <div class="article-content" id="{{id}}">
         <h3>{{title}}</h3>
-        <p class="listContent">{{content}}</p>
+        <p class="listContent content-justified" style="padding-left:20px;">{{content}}</p>
     </div>
 </template>
