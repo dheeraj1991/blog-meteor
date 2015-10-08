@@ -24,7 +24,7 @@ Home Page 1
 
 Home Page 2
 
-![Home 2](http://imgur.com/mlcsLoF)
+![Home 2](http://imgur.com/mlcsLoF.png)
 
 Detail Article 1
 
